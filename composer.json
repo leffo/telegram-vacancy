@@ -3,11 +3,11 @@
 "description":"Implementation of Database Queries with illuminate and Eloquent",
 "type":"project",
 "require": {
-"illuminate/database":"8.x"},
-"autoload": 
-    {"psr-4": 
-        {
-            "AYakovlev\\": "src/",
+    "illuminate/database":"8.x"},
+    "autoload":
+        {"psr-4":
+            {
+                "AYakovlev\\": "src/"
+            }
         }
-    }
 }

@@ -18,9 +18,9 @@ abstract class AbstractController
 
     public function __construct()
     {
-        $this->user = UsersAuthService::getUserByToken();
+        //$this->user = UsersAuthService::getUserByToken();
         $this->view = new View();
-        $this->view->setVar('user', $this->user);
+        //$this->view->setVar('user', $this->user);
    }
 
 }

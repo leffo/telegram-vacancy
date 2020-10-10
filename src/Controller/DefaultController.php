@@ -3,7 +3,7 @@
 
 namespace AYakovlev\Controller;
 
-class DefaultController
+class DefaultController extends AbstractController
 {
     public function index()
     {

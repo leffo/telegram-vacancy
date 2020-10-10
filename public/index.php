@@ -17,4 +17,3 @@ try {
 } catch (Exception $e) {
     View::render('401', ['error' => $e->getMessage()]);
 }
-
