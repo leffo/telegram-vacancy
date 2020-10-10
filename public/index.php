@@ -11,11 +11,11 @@ try {
     $app = new App();
     $app->run();
 } catch (DbException $e) {
-    View::render("500", (array) $e->getMessage(), 500);
+    View::render("500", $e, 500);
     return;
 } catch (UnauthorizedException $e) {
-    View::render('401', ['error' => $e->getMessage()], 401);
+    View::render('401', $e, 401);
     return;
 } catch (Exception $e) {
-    View::render('401', ['error' => $e->getMessage()]);
+    View::render('error', $e);
 }

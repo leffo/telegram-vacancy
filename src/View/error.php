@@ -1,10 +1,11 @@
 <?php
 /**
- *  @var object|null $data - массив входящих переменных
+ *  @var object $data - объект входящих
  */
 ?>
 <?php include 'header.php'; ?>
-<h3>Your request not found</h3>
+<h1>Ощибка!</h1>
 <p><?= $data->getMessage(); ?></p>
 <?php include 'footer.php'; ?>
+
 

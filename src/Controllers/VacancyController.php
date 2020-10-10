@@ -44,16 +44,15 @@ class VacancyController extends AbstractController
 
     public function view(): void
     {
-        $data = Vacancy::getById($this->idVacancy);
+        $data = Vacancy::findOrFail($this->idVacancy);
+        //var_dump($data);
 
         if ($data === null) {
-            View::render("404", (array) $this->idVacancy, 404);
+            View::render("404", null, 404);
             return;
         }
 
-        View::render("vacancy", [
-            'data' => $data,
-        ]);
+        View::render("vacancy", $data);
     }
 
     public function add(): void
