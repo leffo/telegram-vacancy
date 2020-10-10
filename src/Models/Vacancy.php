@@ -32,4 +32,5 @@ class Vacancy extends Model
         return $vac;
     }
     */
+
 }

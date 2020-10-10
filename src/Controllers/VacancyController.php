@@ -57,10 +57,11 @@ class VacancyController extends AbstractController
 
     public function add(): void
     {
-
+        /* позже
         if ($this->user === null) {
             throw new UnauthorizedException();
         }
+        */
 
         if (!empty($_POST)) {
             try {
@@ -75,7 +76,7 @@ class VacancyController extends AbstractController
         }
 
 
-        View::render("addVacancy", []);
+        View::render("addVacancy");
         //return;
     }
 
