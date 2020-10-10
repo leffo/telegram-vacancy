@@ -1,0 +1,6 @@
+.idea/
+vendor/
+helpers
+public/pa/
+logs/
+start.php
