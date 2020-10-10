@@ -16,13 +16,14 @@ class VacancyController extends AbstractController
 {
     private ?int $idVacancy;
     protected Vacancy $vacancy;
+    protected const ID = 3;
 
     public function __construct()
     {
         parent::__construct();
         $this->vacancy = new Vacancy();
-        if (isset(Request::$params[3])) {
-            $this->idVacancy = Request::$params[3];
+        if (isset(Request::$params[self::ID])) {
+            $this->idVacancy = Request::$params[self::ID];
         }
     }
 
@@ -47,14 +48,7 @@ class VacancyController extends AbstractController
         try {
             $data = Vacancy::findOrFail($this->idVacancy);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            View::render('error', $e);
-            return;
-        }
-
-        //var_dump($data);
-
-        if ($data === null) {
-            View::render("404", null, 404);
+            View::render('error', $e, 404);
             return;
         }
 
@@ -83,4 +77,19 @@ class VacancyController extends AbstractController
         View::render("addVacancy", []);
         //return;
     }
+
+    public function edit(): void
+    {
+        try {
+            $data = Vacancy::findOrFail($this->idVacancy);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            View::render('error', $e, 404);
+            return;
+        }
+
+        $data->descriptions = "Вакансия-мечта PHP-разработчика. Таких уже не делают...";
+        $data->save();
+        var_dump($data);
+    }
+
 }
