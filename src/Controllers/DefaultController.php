@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AYakovlev\Controller;
+namespace AYakovlev\Controllers;
 
 class DefaultController extends AbstractController
 {

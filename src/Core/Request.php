@@ -44,12 +44,12 @@ class Request
 
     private function validateCommand(): bool
     {
-        if (!class_exists("AYakovlev\Controller\\" . ucfirst($this->controller) . "Controller")) {
-            throw new Exception("AYakovlev\Controller\\" . ucfirst($this->controller) . "Controller не существует<br>");
+        if (!class_exists("AYakovlev\Controllers\\" . ucfirst($this->controller) . "Controller")) {
+            throw new Exception("AYakovlev\Controllers\\" . ucfirst($this->controller) . "Controller не существует<br>");
         }
 
-        if (!method_exists("AYakovlev\Controller\\" . $this->controller . "Controller", $this->method)) {
-            throw new Exception("Метод AYakovlev\Controller\\" . ucfirst($this->controller) . "Controller\\" . $this->method . " не существует<br>");
+        if (!method_exists("AYakovlev\Controllers\\" . $this->controller . "Controller", $this->method)) {
+            throw new Exception("Метод AYakovlev\Controllers\\" . ucfirst($this->controller) . "Controller\\" . $this->method . " не существует<br>");
         }
 
         return true;
@@ -57,7 +57,7 @@ class Request
 
     public function getController(): string
     {
-        return "AYakovlev\Controller\\" . ucfirst($this->controller) . "Controller";
+        return "AYakovlev\Controllers\\" . ucfirst($this->controller) . "Controller";
     }
 
     public function getMethod(): string

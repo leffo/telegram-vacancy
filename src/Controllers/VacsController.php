@@ -1,11 +1,11 @@
 <?php
 
 
-namespace AYakovlev\Controller;
+namespace AYakovlev\Controllers;
 
 
 use AYakovlev\Core\View;
-use AYakovlev\Model\Vacancy;
+use AYakovlev\Models\Vacancy;
 
 class VacsController extends AbstractController
 {
@@ -17,8 +17,10 @@ class VacsController extends AbstractController
 
     public function vacancies()
     {
-        $data = Vacancy::getAll();
-        View::render("vacancies", $data);
+        $data = Vacancy::all();
+        var_dump($data);
+
+        //View::render("vacancies", $data);
     }
 
 }

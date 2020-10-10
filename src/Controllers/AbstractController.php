@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AYakovlev\Controller;
+namespace AYakovlev\Controllers;
 
 
 use AYakovlev\Core\UsersAuthService;
