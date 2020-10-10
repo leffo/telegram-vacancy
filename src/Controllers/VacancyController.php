@@ -44,7 +44,13 @@ class VacancyController extends AbstractController
 
     public function view(): void
     {
-        $data = Vacancy::findOrFail($this->idVacancy);
+        try {
+            $data = Vacancy::findOrFail($this->idVacancy);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            View::render('error', $e);
+            return;
+        }
+
         //var_dump($data);
 
         if ($data === null) {

@@ -4,8 +4,8 @@
  */
 ?>
 <?php include 'header.php'; ?>
-<h1>Ощибка!</h1>
-<p><?= $data->getMessage(); ?></p>
+<h1>Ошибка!</h1>
+<p><?php echo $data->getMessage(); ?></p>
 <?php include 'footer.php'; ?>
 
 
