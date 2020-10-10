@@ -4,7 +4,6 @@
 namespace AYakovlev\Core;
 
 
-use AYakovlev\Model\User;
 
 class App
 {
@@ -14,6 +13,10 @@ class App
 
     public function run()
     {
+        // создаем соединение с Eloquent, Initialize Illuminate Database Connection
+        require "../config/config.php";
+        new Database();
+
         // разобрать запрос
         $request = new Request();
 

@@ -12,8 +12,10 @@ try {
     $app->run();
 } catch (DbException $e) {
     View::render("500", (array) $e->getMessage(), 500);
+    return;
 } catch (UnauthorizedException $e) {
     View::render('401', ['error' => $e->getMessage()], 401);
+    return;
 } catch (Exception $e) {
     View::render('401', ['error' => $e->getMessage()]);
 }

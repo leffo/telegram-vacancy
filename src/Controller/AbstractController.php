@@ -14,7 +14,7 @@ abstract class AbstractController
     protected View $view;
 
     /** @var User|null */
-    protected ?User $user;
+    //protected ?User $user;
 
     public function __construct()
     {
