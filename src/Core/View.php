@@ -13,7 +13,7 @@ class View
         self::$extraVars[$name] = $value;
     }
 
-    public static function render(string $view, array $data = [], int $code = 200): void
+    public static function render(string $view, ?object $data = null, int $code = 200): void
     {
         http_response_code($code);
         extract(self::$extraVars);

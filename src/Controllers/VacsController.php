@@ -18,9 +18,9 @@ class VacsController extends AbstractController
     public function vacancies()
     {
         $data = Vacancy::all();
-        var_dump($data);
+        //var_dump($data);
 
-        //View::render("vacancies", $data);
+        View::render("vacancies", $data);
     }
 
 }

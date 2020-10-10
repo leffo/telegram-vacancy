@@ -8,8 +8,9 @@ use AYakovlev\Core\Request;
 use AYakovlev\Core\View;
 use AYakovlev\Exception\InvalidArgumentException;
 use AYakovlev\Exception\UnauthorizedException;
-use AYakovlev\Model\User;
-use AYakovlev\Model\Vacancy;
+use AYakovlev\Models\User;
+
+use AYakovlev\Models\Vacancy;
 
 class VacancyController extends AbstractController
 {

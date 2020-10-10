@@ -21,4 +21,5 @@ class Vacancy extends Model
         'descriptions',
         'category',
     ];
+    public $timestamps = true;
 }
