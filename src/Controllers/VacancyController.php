@@ -8,9 +8,12 @@ use AYakovlev\Core\Request;
 use AYakovlev\Core\View;
 use AYakovlev\Exception\InvalidArgumentException;
 use AYakovlev\Exception\Forbidden;
+use AYakovlev\Exception\NotFoundException;
+use AYakovlev\Exception\UnauthorizedException;
 use AYakovlev\Models\User;
 
 use AYakovlev\Models\Vacancy;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class VacancyController extends AbstractController
 {
@@ -47,7 +50,7 @@ class VacancyController extends AbstractController
     {
         try {
             $data = Vacancy::findOrFail($this->idVacancy);
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        } catch (ModelNotFoundException $e) {
             View::render('error', $e, 404);
             return;
         }
@@ -129,16 +132,48 @@ class VacancyController extends AbstractController
 
     public function edit(): void
     {
-        try {
-            $data = Vacancy::findOrFail($this->idVacancy);
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            View::render('error', $e, 404);
-            return;
+       $vacancy = Vacancy::findOrFail($this->idVacancy);
+
+        if ($vacancy === null) {
+            throw new NotFoundException();
         }
 
-        $data->descriptions = "Вакансия-мечта PHP-разработчика. Таких уже не делают...";
-        $data->save();
-        var_dump($data);
+        if ($this->user === null) {
+            throw new UnauthorizedException();
+        }
+
+        if (!empty($_POST)) {
+            try {
+                $vacancy->fill($_POST);
+                $vacancy->save();
+            } catch (InvalidArgumentException $e) {
+                View::render('edit',  $e);
+                return;
+            }
+
+            header('Location: /vacancy/view/' . $vacancy->id, true, 302);
+            exit();
+        }
+
+        View::render('edit', $vacancy);
+
+        /* 
+        if (isset($this->idVacancy)) {
+        
+           try {
+                $data = Vacancy::findOrFail($this->idVacancy);
+            } catch (ModelNotFoundException $e) {
+                View::render('error', $e, 404);
+                return;
+            }
+
+            $data->descriptions = "Вакансия-мечта PHP-разработчика. Таких уже не делают...";
+            $data->save();
+            var_dump($data);
+        } else {
+            throw new InvalidArgumentException("Вы не указали ID для редактирования");
+        }
+        */
     }
 
 }
