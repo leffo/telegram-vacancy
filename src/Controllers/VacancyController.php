@@ -57,11 +57,9 @@ class VacancyController extends AbstractController
 
     public function add(): void
     {
-        /* TODO: позже
-        if ($this->user === null) {
+         if ($this->user === null) {
             throw new UnauthorizedException();
         }
-        */
 
         if (!empty($_POST)) {
             try {

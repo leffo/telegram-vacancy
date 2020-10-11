@@ -6,7 +6,7 @@ namespace AYakovlev\Controllers;
 
 use AYakovlev\Core\UsersAuthService;
 use AYakovlev\Core\View;
-use AYakovlev\Core\User;
+use AYakovlev\Models\User;
 
 abstract class AbstractController
 {
@@ -14,13 +14,13 @@ abstract class AbstractController
     protected View $view;
 
     /** @var User|null */
-    //protected ?User $user;
+    protected ?User $user;
 
     public function __construct()
     {
-        //$this->user = UsersAuthService::getUserByToken();
+        $this->user = UsersAuthService::getUserByToken();
         $this->view = new View();
-        //$this->view->setVar('user', $this->user);
+        $this->view->setVar('user', $this->user);
    }
 
 }

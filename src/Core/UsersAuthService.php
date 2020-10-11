@@ -38,7 +38,7 @@ class UsersAuthService
             return null;
         }
 
-        if ($user->getAuthToken() !== $authToken) {
+        if ($user->auth_token !== $authToken) {
             return null;
         }
 

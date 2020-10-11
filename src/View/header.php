@@ -17,7 +17,7 @@
     <tr>
         <td colspan="2" style="text-align: right">
             <?php if(!empty($user)): ?>
-                Привет, <?= $user->getNickname() ?>  | <a href="/users/logOut">Выйти</a>
+                Привет, <?= $user->nickname ?>  | <a href="/users/logOut">Выйти</a>
             <?php else: ?>
                 <a href="/users/login">Войти</a> | <a href="/users/signup">Зарегестрироваться</a>
             <?php endif; ?>

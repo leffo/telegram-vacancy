@@ -129,8 +129,9 @@ class UsersController extends AbstractController
                 UsersAuthService::createToken($user);
                 header('Location: /');
                 exit();
+
             } catch (InvalidArgumentException $e) {
-                View::render('login', ['error' => $e->getMessage()]);
+                View::render('login', $e);
                 return;
             }
         }
