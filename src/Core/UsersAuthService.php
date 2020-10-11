@@ -32,7 +32,7 @@ class UsersAuthService
 
         [$userId, $authToken] = explode(':', $token, 2);
 
-        $user = User::getById((int) $userId);
+        $user = User::findOrFail($userId);
 
         if ($user === null) {
             return null;
