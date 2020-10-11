@@ -26,7 +26,7 @@ class EmailSender
 
         // выполняем функцию sendmail
         echo $tmpmail . "<br><br><br>";
-
-        mail($receiver->email, $subject, $body, 'Content-Type: text/html; charset=UTF-8');
+        // TODO uncommented in production
+        //mail($receiver->email, $subject, $body, 'Content-Type: text/html; charset=UTF-8');
     }
 }

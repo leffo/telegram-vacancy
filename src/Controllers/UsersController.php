@@ -15,6 +15,8 @@ use AYakovlev\Models\User;
 
 class UsersController extends AbstractController
 {
+    public const ID = 3;
+    public const TOKEN = 4;
 
     public function signUp()
     {
@@ -87,11 +89,12 @@ class UsersController extends AbstractController
 
     public function activate()
     {
-        $user = User::getById(Request::$params[3]);
-        $isCodeValid = UserActivationService::checkActivationCode($user, Request::$params[4]);
+        $user = User::findOrFail(Request::$params[self::ID]);
+        $isCodeValid = UserActivationService::checkActivationCode($user, Request::$params[self::TOKEN]);
         if ($isCodeValid) {
-            $user->activate();
-            View::render('activateSuccessful', []);
+            $user->is_confirmed = 1;
+            $user->save();
+            View::render('activateSuccessful');
         }
     }
 
