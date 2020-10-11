@@ -10,10 +10,10 @@ use AYakovlev\Models\User;
 
 abstract class AbstractController
 {
-    /** @var View */
+    /** @var View $view*/
     protected View $view;
 
-    /** @var User|null */
+    /** @var User|null $user*/
     protected ?User $user;
 
     public function __construct()

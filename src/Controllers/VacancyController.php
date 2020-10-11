@@ -7,7 +7,7 @@ namespace AYakovlev\Controllers;
 use AYakovlev\Core\Request;
 use AYakovlev\Core\View;
 use AYakovlev\Exception\InvalidArgumentException;
-use AYakovlev\Exception\UnauthorizedException;
+use AYakovlev\Exception\Forbidden;
 use AYakovlev\Models\User;
 
 use AYakovlev\Models\Vacancy;
@@ -57,8 +57,12 @@ class VacancyController extends AbstractController
 
     public function add(): void
     {
-         if ($this->user === null) {
-            throw new UnauthorizedException();
+        if ($this->user === null) {
+            throw new Forbidden();
+        }
+
+        if($this->user->role !== 'admin') {
+            throw new Forbidden('Для добавления статьи нужно обладать правами администратора');
         }
 
         if (!empty($_POST)) {
