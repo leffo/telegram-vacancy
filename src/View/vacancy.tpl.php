@@ -20,7 +20,8 @@
     <b>Технологии:</b> <?= $data->technology; ?><br>
     <b>Требуемые навыки:</b> <?= $data->skills; ?><br>
     <b>Описание вакансии:</b> <?= $data->descriptions; ?><br>
-
+</p>
     <br>
-
+<p><a href="/vacancy/edit/<?= $data->id; ?>">Редактировать</a></p>
+    <br>
 <?php include 'footer.php'; ?>

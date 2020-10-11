@@ -147,7 +147,7 @@ class VacancyController extends AbstractController
                 $vacancy->fill($_POST);
                 $vacancy->save();
             } catch (InvalidArgumentException $e) {
-                View::render('edit',  $e);
+                View::render('editVacancy',  $e);
                 return;
             }
 
@@ -155,7 +155,7 @@ class VacancyController extends AbstractController
             exit();
         }
 
-        View::render('edit', $vacancy);
+        View::render('editVacancy', $vacancy);
 
         /* 
         if (isset($this->idVacancy)) {

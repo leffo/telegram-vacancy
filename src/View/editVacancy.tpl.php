@@ -7,10 +7,6 @@
 <?php include 'header.php'; ?>
     <h1>Редактирование вакансии</h1>
 
-<?php if(!empty($data)): ?>
-    <div style="color: red;"><?= "ВНИМАНИЕ! " . $data->getMessage() ?></div><br><br>
-
-<?php endif; ?>
     <form action="/vacancy/edit/<?= $data->id; ?>"  method="post">
         <p><label for="title">Наименование вакансии:</label><br>
         <input type="text" name="title" id="title" value="<?= $_POST['title'] ?? $data->title ?>" size="50"><br>
@@ -43,6 +39,6 @@
         <input type="text" name="category" id="category" value="<?= $_POST['category'] ?? $data->category ?>" size="50" <br>
         <br><br><br>
 
-        <input type="submit" value="Создать вакансию">
+        <input type="submit" value="Обновить вакансию">
     </form>
 <?php include 'footer.php'; ?>

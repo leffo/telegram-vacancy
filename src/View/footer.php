@@ -6,6 +6,7 @@
         <li><a href="/vacancy/add">Add vacancy</a></li>
         <li><a href="/aboutme/about">About me...</a></li>
         <li><a href="/pa/adminer.php">Edit BD</a></li>
+
     </ul>
 </td>
 </tr>
