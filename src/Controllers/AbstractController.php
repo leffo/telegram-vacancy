@@ -6,7 +6,7 @@ namespace AYakovlev\Controllers;
 
 use AYakovlev\Core\UsersAuthService;
 use AYakovlev\Core\View;
-use AYakovlev\Model\User;
+use AYakovlev\Core\User;
 
 abstract class AbstractController
 {

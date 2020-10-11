@@ -4,7 +4,7 @@
 namespace AYakovlev\Core;
 
 
-use AYakovlev\Model\User;
+use AYakovlev\Core\User;
 
 class EmailSender
 {

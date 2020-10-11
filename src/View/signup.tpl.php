@@ -1,14 +1,14 @@
 <?php
 /**
- * @var array $data - ошибка приложения.
+ * @var object $data - ошибка приложения.
  */
 ?>
 <?php include 'header.php'; ?>
 
 <div style="text-align: center;">
     <h1>Регистрация</h1>
-    <?php if (!empty($data['error'])): ?>
-        <div style="background-color: red;padding: 5px;margin: 15px"><?= $data['error'] ?></div>
+    <?php if (!empty($data)): ?>
+        <div style="background-color: red;padding: 5px;margin: 15px"><?= $data->getMessage(); ?></div>
     <?php endif; ?>
     <form action="/users/signup" method="post">
         <label>Nickname <input type="text" name="nickname" value="<?= $_POST['nickname'] ?? '' ?>"></label>
