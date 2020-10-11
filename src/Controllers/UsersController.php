@@ -9,8 +9,8 @@ use AYakovlev\Core\Request;
 use AYakovlev\Core\UsersAuthService;
 use AYakovlev\Core\View;
 use AYakovlev\Exception\InvalidArgumentException;
-use AYakovlev\Model\User;
-use AYakovlev\Model\UserActivationService;
+use AYakovlev\Models\User;
+use AYakovlev\Models\UserActivationService;
 
 class UsersController extends AbstractController
 {
@@ -21,14 +21,14 @@ class UsersController extends AbstractController
             try {
                 $user = User::signUp($_POST);
             } catch (InvalidArgumentException $e) {
-                View::render('signup', ['error' => $e->getMessage()]);
+                View::render('signup', $e);
                 return;
             }
 
             if ($user instanceof User) {
                 $code = UserActivationService::createActivationCode($user);
                 EmailSender::send($user, 'Активация', 'userActivation.php', [
-                    'userId' => $user->getId(),
+                    'userId' => $user->id,
                     'code' => $code
                 ]);
 
@@ -36,7 +36,7 @@ class UsersController extends AbstractController
                 return;
             }
         }
-        View::render('signup', []);
+        View::render('signup', null);
     }
 
     public function activate()
