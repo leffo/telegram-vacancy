@@ -4,7 +4,7 @@
 namespace AYakovlev\Core;
 
 
-use AYakovlev\Core\User;
+use AYakovlev\Models\User;
 
 class EmailSender
 {
@@ -21,8 +21,9 @@ class EmailSender
         require __DIR__ . '/../Mail/' . $templateName;
         $body = ob_get_contents();
         ob_end_clean();
-        $tmpmail = "To: " . $receiver->getEmail() . "<br>" .  "Theme: " . $subject . "<br><br>" . $body;
-        var_dump($tmpmail);
-        mail($receiver->getEmail(), $subject, $body, 'Content-Type: text/html; charset=UTF-8');
+        $tmpmail = "To: " . $receiver->email . "<br>" .  "Theme: " . $subject . "<br><br>" . $body;
+        // выполняем функцию sendmail
+        echo $tmpmail . "<br><br><br>";
+        mail($receiver->email, $subject, $body, 'Content-Type: text/html; charset=UTF-8');
     }
 }
