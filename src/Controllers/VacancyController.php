@@ -156,24 +156,21 @@ class VacancyController extends AbstractController
         }
 
         View::render('editVacancy', $vacancy);
-
-        /* 
-        if (isset($this->idVacancy)) {
-        
-           try {
-                $data = Vacancy::findOrFail($this->idVacancy);
-            } catch (ModelNotFoundException $e) {
-                View::render('error', $e, 404);
-                return;
-            }
-
-            $data->descriptions = "Вакансия-мечта PHP-разработчика. Таких уже не делают...";
-            $data->save();
-            var_dump($data);
-        } else {
-            throw new InvalidArgumentException("Вы не указали ID для редактирования");
-        }
-        */
     }
 
+    public function delete(): void
+    {
+        if ($this->user === null) {
+            throw new UnauthorizedException();
+        }
+
+        try {
+            Vacancy::findOrFail($this->idVacancy)->delete();
+        } catch (ModelNotFoundException $e) {
+            View::render('error', $e, 404);
+            return;
+        }
+        $this->idVacancy = null;
+        View::render('delete');
+    }
 }

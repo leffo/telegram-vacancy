@@ -22,7 +22,10 @@
         <b>Описание вакансии:</b> <?= $vacancy->descriptions; ?><br>
     </p>
 
-    <h5><a href="/vacancy/edit/<?= $vacancy->id; ?>">Редактировать</a></h5>
+    <h5><a href="/vacancy/edit/<?= $vacancy->id; ?>">Редактировать</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="/vacancy/delete/<?= $vacancy->id; ?>">Удалить</a>
+    </h5>
 
     <hr>
 <?php endforeach; ?>

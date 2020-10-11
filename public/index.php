@@ -6,10 +6,14 @@ use AYakovlev\Core\App;
 use AYakovlev\Core\View;
 use AYakovlev\Exception\DbException;
 use AYakovlev\Exception\Forbidden;
+use AYakovlev\Exception\UnauthorizedException;
 
 try {
     $app = new App();
     $app->run();
+} catch (UnauthorizedException $e) {
+    View::render("401", $e, 403);
+    return;
 } catch (DbException $e) {
     View::render("500", $e, 500);
     return;
