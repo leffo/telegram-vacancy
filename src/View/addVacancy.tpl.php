@@ -1,14 +1,14 @@
 <?php
 /**
- *  @var array $data - массив входящих переменных
+ *  @var object|null $data - объект входящих переменных
  *  @var object $author
  */
 ?>
 
 <?php include 'header.php'; ?>
     <h1>Создание новой вакансии</h1>
-<?php if(!empty($error)): ?>
-    <div style="color: red;"><?= $error ?></div>
+<?php if(!empty($data)): ?>
+    <div style="color: red;"><?= "ВНИМАНИЕ! " . $data->getMessage() ?></div><br><br>
 <?php endif; ?>
     <form action="/vacancy/add" method="post">
         <label for="title">Наименование вакансии:</label><br>
@@ -35,8 +35,8 @@
         <label for="skills">Требуемые навыки:</label><br>
         <input type="text" name="skills" id="skills" value="<?= $_POST['skills'] ?? '' ?>" size="50" <br>
         <br>
-        <label for="conditions">Условия:</label><br>
-        <input type="text" name="conditions" id="conditions" value="<?= $_POST['conditions'] ?? '' ?>" size="50" <br>
+        <label for="descriptions">Описание вакансии:</label><br>
+        <textarea name="descriptions" id="descriptions" rows="10" cols="80" value="<?= $_POST['descriptions'] ?? '' ?>" size="50" <br>
         <br><br><br>
         <label for="category">Категория:</label><br>
         <input type="text" name="category" id="category" value="<?= $_POST['category'] ?? '' ?>" size="50" <br>
