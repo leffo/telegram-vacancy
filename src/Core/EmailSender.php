@@ -18,12 +18,15 @@ class EmailSender
         extract($templateVars);
 
         ob_start();
-        require __DIR__ . '/../Mail/' . $templateName;
+
+        require __DIR__ . "/../Mail/" . $templateName;
         $body = ob_get_contents();
         ob_end_clean();
         $tmpmail = "To: " . $receiver->email . "<br>" .  "Theme: " . $subject . "<br><br>" . $body;
+
         // выполняем функцию sendmail
         echo $tmpmail . "<br><br><br>";
+
         mail($receiver->email, $subject, $body, 'Content-Type: text/html; charset=UTF-8');
     }
 }

@@ -6,11 +6,12 @@ namespace AYakovlev\Controllers;
 
 use AYakovlev\Core\EmailSender;
 use AYakovlev\Core\Request;
+use AYakovlev\Core\UserActivationService;
 use AYakovlev\Core\UsersAuthService;
 use AYakovlev\Core\View;
 use AYakovlev\Exception\InvalidArgumentException;
 use AYakovlev\Models\User;
-use AYakovlev\Models\UserActivationService;
+
 
 class UsersController extends AbstractController
 {
@@ -68,17 +69,17 @@ class UsersController extends AbstractController
                 View::render('signup', $e);
                 return;
             }
-            /*
+
             if ($user instanceof User) {
                 $code = UserActivationService::createActivationCode($user);
                 EmailSender::send($user, 'Активация', 'userActivation.php', [
                     'userId' => $user->id,
                     'code' => $code
                 ]);
-            */
+
                 View::render('signUpSuccessful');
                 return;
-            //}
+            }
         }
 
         View::render('signup', null);
