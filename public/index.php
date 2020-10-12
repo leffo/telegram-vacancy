@@ -13,7 +13,7 @@ try {
     $app = new App();
     $app->run();
 } catch (NotFoundJSONException $e) {
-    View::displayJson($e->getMessage(), 404);
+    View::displayJson(['ERROR' => $e->getMessage()], 404);
     return;
 } catch (UnauthorizedException $e) {
     View::render("401", $e, 403);

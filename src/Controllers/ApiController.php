@@ -32,18 +32,26 @@ class ApiController extends AbstractController
 
     public function vacancy()
     {
-
         try {
             $vacancy = Vacancy::findOrFail(Request::$params[self::ID]);
         } catch (ModelNotFoundException $e) {
-            throw new NotFoundJSONException("Ошибка 404 - вакансия не существует");
-        }
-
-
-        if ($vacancy === null) {
-            throw new NotFoundJSONException("Ошибка 404 - вакансия не существует");
+            throw new NotFoundJSONException("404 - вакансия не существует");
         }
 
         $this->view->displayJson($vacancy, 200);
+    }
+
+    public function add()
+    {
+        $input = $this->getInputData();
+        //var_dump($input);
+
+        $vacancyFromRequest = $input['vacancy'][0];
+
+        $vacancy = Vacancy::create($vacancyFromRequest);
+        $vacancy->save();
+
+        header('Location: /api/vacancy/' . $vacancy->id, true, 302);
+        exit;
     }
 }
