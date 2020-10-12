@@ -6,11 +6,15 @@ use AYakovlev\Core\App;
 use AYakovlev\Core\View;
 use AYakovlev\Exception\DbException;
 use AYakovlev\Exception\Forbidden;
+use AYakovlev\Exception\NotFoundJSONException;
 use AYakovlev\Exception\UnauthorizedException;
 
 try {
     $app = new App();
     $app->run();
+} catch (NotFoundJSONException $e) {
+    View::displayJson($e->getMessage(), 404);
+    return;
 } catch (UnauthorizedException $e) {
     View::render("401", $e, 403);
     return;
