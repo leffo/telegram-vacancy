@@ -1,2 +1,2 @@
-# EloquentWithoutLara
-Eloquent Without Laravel for telegram bot backend
+# Telegram bot vacancy
+Backend for telegram bot vacancy with Eloquent Without Laravel
